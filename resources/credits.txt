@@ -1,0 +1,2 @@
+crt shader: https://www.youtube.com/@pitrddog
+font: https://fontenddev.com/fonts/double-homicide/

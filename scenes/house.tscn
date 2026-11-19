@@ -1,0 +1,198 @@
+[gd_scene format=3 uid="uid://dk3eaxbyosm2i"]
+
+[ext_resource type="PackedScene" uid="uid://bxfmpnwqmjpcx" path="res://scenes/player.tscn" id="1_d7po0"]
+[ext_resource type="Texture2D" uid="uid://dcyxtsi1h6ww4" path="res://sprites/house/house.png" id="1_qtlar"]
+[ext_resource type="Script" uid="uid://bh1jhn8l4fj2c" path="res://script/house.gd" id="1_rk7hg"]
+[ext_resource type="PackedScene" uid="uid://br0dgaesuylub" path="res://scenes/crt-filter.tscn" id="2_se78b"]
+[ext_resource type="PackedScene" uid="uid://bgj8dyv2cfbce" path="res://scenes/textbox.tscn" id="3_3bgk5"]
+[ext_resource type="Texture2D" uid="uid://bg26kiqntp1n6" path="res://sprites/house/geschenk.png" id="4_bwc8c"]
+[ext_resource type="Texture2D" uid="uid://cp4h5u6o5w23k" path="res://sprites/house/soRahmen.png" id="5_mhx8p"]
+[ext_resource type="Texture2D" uid="uid://qvfkndsi1xgp" path="res://sprites/house/vater1.png" id="5_ptc3g"]
+[ext_resource type="Texture2D" uid="uid://cm1qg2oumct1y" path="res://sprites/house/vater2.png" id="6_wcu0q"]
+[ext_resource type="Texture2D" uid="uid://lcrlxyl8xqxa" path="res://sprites/house/gruselmann.png" id="9_mhx8p"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j2mxd"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rk7hg"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_se78b"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwks1"]
+size = Vector2(80.5, 1811.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2mxd"]
+size = Vector2(659.5, 281)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gwks1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ptc3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wcu0q")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vep1d"]
+size = Vector2(997.5, 1357.5)
+
+[sub_resource type="PrismMesh" id="PrismMesh_gwks1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_rvxeo"]
+
+[node name="House" type="Node2D" unique_id=398775126]
+script = ExtResource("1_rk7hg")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1000705193]
+
+[node name="Crt" parent="UI" unique_id=134612647 instance=ExtResource("2_se78b")]
+
+[node name="Textbox" parent="UI" unique_id=772682099 node_paths=PackedStringArray("player") instance=ExtResource("3_3bgk5")]
+player = NodePath("../../Player")
+
+[node name="Geschenk" type="Sprite2D" parent="UI" unique_id=71649208]
+visible = false
+position = Vector2(547, 307)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_bwc8c")
+
+[node name="Rahmen" type="Sprite2D" parent="UI/Geschenk" unique_id=655292579]
+modulate = Color(1, 1, 1, 0.16078432)
+show_behind_parent = true
+scale = Vector2(1.305, 1.305)
+texture = ExtResource("5_mhx8p")
+
+[node name="Map" type="Node2D" parent="." unique_id=729837125]
+
+[node name="House" type="Sprite2D" parent="Map" unique_id=1661977207]
+position = Vector2(576, 190)
+scale = Vector2(5, 5)
+texture = ExtResource("1_qtlar")
+
+[node name="ColorRect" type="ColorRect" parent="Map" unique_id=1113818758]
+offset_left = -8181.0
+offset_top = 1807.0
+offset_right = 9390.0
+offset_bottom = 2141.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Map" unique_id=1865981564]
+offset_left = 9314.001
+offset_top = -1443.0001
+offset_right = 26885.0
+offset_bottom = -1109.0001
+scale = Vector2(0.0659728, 10.326171)
+color = Color(0, 0, 0, 1)
+
+[node name="Walls" type="StaticBody2D" parent="Map" unique_id=2051843526]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Walls" unique_id=637105679]
+position = Vector2(-158, 1864)
+shape = SubResource("WorldBoundaryShape2D_j2mxd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Map/Walls" unique_id=1030280099]
+position = Vector2(-7348, 449)
+shape = SubResource("WorldBoundaryShape2D_rk7hg")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Map/Walls" unique_id=782970379]
+position = Vector2(9277, 664)
+shape = SubResource("WorldBoundaryShape2D_se78b")
+
+[node name="Exit" type="Area2D" parent="Map" unique_id=1870338046]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Exit" unique_id=590171051]
+position = Vector2(7691, 943)
+shape = SubResource("RectangleShape2D_gwks1")
+
+[node name="Bed" type="Area2D" parent="Map" unique_id=1775940638]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Bed" unique_id=423197654]
+position = Vector2(-5849.25, 1456)
+shape = SubResource("RectangleShape2D_j2mxd")
+
+[node name="Vater" type="Area2D" parent="Map" unique_id=1663903334]
+
+[node name="Vater" type="AnimatedSprite2D" parent="Map/Vater" unique_id=1564151862]
+position = Vector2(1143, 1080)
+sprite_frames = SubResource("SpriteFrames_gwks1")
+frame_progress = 0.765438
+
+[node name="ColorRect" type="ColorRect" parent="Map/Vater/Vater" unique_id=247023721]
+show_behind_parent = true
+offset_left = -298.0
+offset_top = -170.0
+offset_right = 229.0
+offset_bottom = 164.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Vater" unique_id=825378165]
+position = Vector2(1207.25, 1073.25)
+shape = SubResource("RectangleShape2D_vep1d")
+
+[node name="Gruselmann" type="Sprite2D" parent="Map" unique_id=107139355]
+visible = false
+position = Vector2(4898, 1173)
+texture = ExtResource("9_mhx8p")
+flip_h = true
+
+[node name="Cameras" type="Node2D" parent="." unique_id=567761725]
+
+[node name="Door" type="Camera2D" parent="Cameras" unique_id=727057159]
+position = Vector2(6581, 334)
+zoom = Vector2(0.2, 0.2)
+
+[node name="Vadder" type="Camera2D" parent="Cameras" unique_id=135067177]
+position = Vector2(784, 309)
+zoom = Vector2(0.2, 0.2)
+
+[node name="Bed" type="Camera2D" parent="Cameras" unique_id=338719627]
+position = Vector2(-5013, 331)
+zoom = Vector2(0.2, 0.2)
+
+[node name="Player" parent="." unique_id=1190672547 instance=ExtResource("1_d7po0")]
+position = Vector2(2378, 1181)
+SPEED = 1400
+
+[node name="Boom" type="Node2D" parent="Player" unique_id=732616085]
+visible = false
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Player/Boom" unique_id=929329300]
+modulate = Color(1, 0.02745098, 0.011764706, 1)
+position = Vector2(292, -485.00006)
+rotation = -1.9969109
+scale = Vector2(105.500046, 583.5009)
+mesh = SubResource("PrismMesh_gwks1")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Player/Boom" unique_id=627649059]
+modulate = Color(1, 0.02745098, 0.011764706, 1)
+position = Vector2(-34, -341)
+rotation = -1.9969109
+scale = Vector2(291.59177, 238.56805)
+mesh = SubResource("SphereMesh_rvxeo")
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="Player/Boom" unique_id=808167091]
+modulate = Color(1, 0.02745098, 0.011764706, 1)
+position = Vector2(482.10248, -219.9744)
+rotation = -0.2638772
+scale = Vector2(275.3778, 997.465)
+skew = -1.1098557
+mesh = SubResource("PrismMesh_gwks1")
+
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="Player/Boom" unique_id=1259171234]
+modulate = Color(1, 0.02745098, 0.011764706, 1)
+position = Vector2(162.76936, -178.61537)
+rotation = -0.9443008
+scale = Vector2(179.04643, 617.9048)
+mesh = SubResource("PrismMesh_gwks1")
+
+[connection signal="body_entered" from="Map/Exit" to="." method="_exit_entered"]
+[connection signal="body_exited" from="Map/Exit" to="." method="_any_exited"]
+[connection signal="body_entered" from="Map/Bed" to="." method="_bed_entered"]
+[connection signal="body_exited" from="Map/Bed" to="." method="_any_exited"]
+[connection signal="body_entered" from="Map/Vater" to="." method="_vater_entered"]
+[connection signal="body_exited" from="Map/Vater" to="." method="_any_exited"]

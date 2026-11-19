@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://jc8asmc4dblm"]
+
+[ext_resource type="Script" uid="uid://dxwx3dda0i8b2" path="res://script/free.gd" id="1_jd0lw"]
+[ext_resource type="FontFile" uid="uid://6l3g8lx882e3" path="res://sprites/KiwiSoda.ttf" id="1_wl0lh"]
+[ext_resource type="PackedScene" uid="uid://br0dgaesuylub" path="res://scenes/crt-filter.tscn" id="2_qakv8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gwks1"]
+font = ExtResource("1_wl0lh")
+font_size = 112
+
+[node name="Free" type="Node2D" unique_id=759565331]
+script = ExtResource("1_jd0lw")
+
+[node name="Crt" parent="." unique_id=134612647 instance=ExtResource("2_qakv8")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2083374200]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1600047148]
+offset_left = 25.0
+offset_top = 276.0
+offset_right = 1131.0
+offset_bottom = 404.0
+text = "The toilet is free now."
+label_settings = SubResource("LabelSettings_gwks1")

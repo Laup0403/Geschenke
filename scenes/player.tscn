@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://bxfmpnwqmjpcx"]
+
+[ext_resource type="Texture2D" uid="uid://bkrtc454djkyv" path="res://sprites/player/idle1.png" id="1_g2els"]
+[ext_resource type="Script" uid="uid://c7nsjrx3cnn0f" path="res://script/player.gd" id="1_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://chersrfy6iira" path="res://sprites/player/idle3.png" id="2_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://8r3aepj4onre" path="res://sprites/player/idle2.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://bskk7o2d1no0n" path="res://sprites/player/idle4.png" id="3_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://bhfhixikipqp1" path="res://sprites/player/walk6.png" id="4_fulsm"]
+[ext_resource type="Texture2D" uid="uid://8m08fwef62me" path="res://sprites/player/walk1.png" id="4_smehm"]
+[ext_resource type="Texture2D" uid="uid://svhninmlj18s" path="res://sprites/player/walk7.png" id="5_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://bu67lt63o6cwy" path="res://sprites/player/walk2.png" id="5_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://b6b6bq6pf3ujo" path="res://sprites/player/walk8.png" id="6_60mlk"]
+[ext_resource type="Texture2D" uid="uid://c3dto1w748k1p" path="res://sprites/player/walk3.png" id="6_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://b2njbswjy2n7c" path="res://sprites/player/walk4.png" id="7_d2wvv"]
+[ext_resource type="Texture2D" uid="uid://c41mg51buxy15" path="res://sprites/player/walk9.png" id="7_i4ail"]
+[ext_resource type="Texture2D" uid="uid://dvpxcf1sdlqf4" path="res://sprites/player/walk5.png" id="8_3v2ag"]
+[ext_resource type="Texture2D" uid="uid://cuybvplj6t2xv" path="res://sprites/player/walk10.png" id="8_a38lo"]
+[ext_resource type="Texture2D" uid="uid://5d1pauiq64qm" path="res://sprites/player/Interact.png" id="9_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://c4rxnep85vgxd" path="res://sprites/house2/Ohgottogott.png" id="16_qfm1y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vep1d"]
+size = Vector2(637, 1284)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gwks1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a8ls1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qfm1y")
+}],
+"loop": 1,
+"name": &"grusel_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fulsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4r5pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_60mlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4r5pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fulsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i4ail")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_a38lo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i4ail")
+}],
+"loop": 1,
+"name": &"grusel_walk",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g2els")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qhqgy")
+}],
+"loop": 1,
+"name": &"normal_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_smehm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ur7pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y4r1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ur7pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_smehm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_d2wvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3v2ag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_d2wvv")
+}],
+"loop": 1,
+"name": &"normal_walk",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_qfm1y")
+}],
+"loop": 1,
+"name": &"ogottogott",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=1190672547]
+script = ExtResource("1_qhqgy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2028898746]
+position = Vector2(3.5, 46)
+shape = SubResource("RectangleShape2D_vep1d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1135849719]
+sprite_frames = SubResource("SpriteFrames_gwks1")
+animation = &"grusel_idle"
+
+[node name="Interact" type="Sprite2D" parent="." unique_id=1757010576]
+visible = false
+position = Vector2(-61, -965)
+scale = Vector2(0.28808594, 0.28808594)
+texture = ExtResource("9_ur7pv")

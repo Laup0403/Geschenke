@@ -1,0 +1,253 @@
+[gd_scene format=3 uid="uid://dhccf5ct2l0al"]
+
+[ext_resource type="Script" uid="uid://buqt82uh5cw1s" path="res://script/house2.gd" id="1_1mqgc"]
+[ext_resource type="PackedScene" uid="uid://br0dgaesuylub" path="res://scenes/crt-filter.tscn" id="1_oswxr"]
+[ext_resource type="PackedScene" uid="uid://bgj8dyv2cfbce" path="res://scenes/textbox.tscn" id="2_8lpwj"]
+[ext_resource type="Texture2D" uid="uid://oa0mucrby703" path="res://sprites/house2/eyes-closed.png" id="3_i2p4k"]
+[ext_resource type="Texture2D" uid="uid://dyfm576fyxt3y" path="res://sprites/house2/eyes-open.png" id="4_1mqgc"]
+[ext_resource type="Texture2D" uid="uid://d0jcq283r4qin" path="res://sprites/house2/map.png" id="6_j2bgk"]
+[ext_resource type="PackedScene" uid="uid://bxfmpnwqmjpcx" path="res://scenes/player.tscn" id="7_7k1fy"]
+[ext_resource type="Texture2D" uid="uid://bspj1sikcgnru" path="res://sprites/house2/curtrain.png" id="7_figrx"]
+[ext_resource type="Script" uid="uid://c8m64frwcmnyq" path="res://script/camera_shake.gd" id="7_ks1xt"]
+[ext_resource type="Texture2D" uid="uid://0ya3214v36md" path="res://sprites/house2/key.png" id="8_fbgik"]
+[ext_resource type="Texture2D" uid="uid://dk0i3xs3nawsc" path="res://sprites/house2/ziggarettes.png" id="9_di3u4"]
+[ext_resource type="Texture2D" uid="uid://duas7v7batpjs" path="res://sprites/house2/green.png" id="10_eddy8"]
+[ext_resource type="Texture2D" uid="uid://brd2svqb4cxh1" path="res://sprites/house2/redvsblue.png" id="11_wnqn6"]
+[ext_resource type="Texture2D" uid="uid://dopo36xxdnapa" path="res://sprites/house2/pillen.png" id="12_drt4j"]
+[ext_resource type="Texture2D" uid="uid://b5pn4bnqi5x8g" path="res://sprites/schloss/leberwurst.png" id="13_ebe3l"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gwks1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ks1xt"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_figrx"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwks1"]
+size = Vector2(82, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2mxd"]
+size = Vector2(1, 111)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbgik"]
+size = Vector2(10.5, 111)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_di3u4"]
+size = Vector2(67.25, 117.5)
+
+[node name="House2" type="Node2D" unique_id=677738520]
+script = ExtResource("1_1mqgc")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1356303992]
+
+[node name="Crt" parent="UI" unique_id=134612647 node_paths=PackedStringArray("CameraContainer") instance=ExtResource("1_oswxr")]
+CameraContainer = NodePath("../../Cameras")
+
+[node name="Textbox" parent="UI" unique_id=772682099 node_paths=PackedStringArray("player") instance=ExtResource("2_8lpwj")]
+player = NodePath("../../Player")
+
+[node name="Black" type="ColorRect" parent="UI" unique_id=1853793116]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -89.0
+offset_top = -65.0
+offset_right = 1272.0
+offset_bottom = 735.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Eyes" type="Node2D" parent="UI" unique_id=569317215]
+visible = false
+
+[node name="Closed" type="Sprite2D" parent="UI/Eyes" unique_id=1125153664]
+position = Vector2(576, 324)
+texture = ExtResource("3_i2p4k")
+
+[node name="Open" type="Sprite2D" parent="UI/Eyes" unique_id=393641387]
+visible = false
+position = Vector2(576, 324)
+texture = ExtResource("4_1mqgc")
+
+[node name="Map" type="Node2D" parent="." unique_id=422080642]
+
+[node name="Map" type="Sprite2D" parent="Map" unique_id=1180828569]
+texture = ExtResource("6_j2bgk")
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="Map" unique_id=58026961]
+offset_left = 37.0
+offset_top = 656.0
+offset_right = 3501.0
+offset_bottom = 749.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Map" unique_id=862183734]
+offset_left = 3496.0
+offset_right = 3668.0
+offset_bottom = 766.0
+color = Color(0, 0, 0, 1)
+
+[node name="Curtrain" type="Sprite2D" parent="Map" unique_id=2008835290]
+position = Vector2(1569, 247)
+texture = ExtResource("7_figrx")
+
+[node name="Wande" type="StaticBody2D" parent="Map" unique_id=727280900]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Wande" unique_id=1435361488]
+position = Vector2(633, 653)
+shape = SubResource("WorldBoundaryShape2D_gwks1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Map/Wande" unique_id=1627199870]
+position = Vector2(173, 540)
+shape = SubResource("WorldBoundaryShape2D_ks1xt")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Map/Wande" unique_id=382306705]
+position = Vector2(3500, 412)
+shape = SubResource("WorldBoundaryShape2D_figrx")
+
+[node name="CRT" type="Area2D" parent="Map" unique_id=634880797]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/CRT" unique_id=413629547]
+position = Vector2(2652, 518)
+shape = SubResource("RectangleShape2D_gwks1")
+
+[node name="Sink" type="Area2D" parent="Map" unique_id=1171428779]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Sink" unique_id=1236612371]
+position = Vector2(1562, 525)
+shape = SubResource("RectangleShape2D_j2mxd")
+
+[node name="Photo" type="Area2D" parent="Map" unique_id=1006358206]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Photo" unique_id=1989192773]
+position = Vector2(2070, 525)
+shape = SubResource("RectangleShape2D_j2mxd")
+
+[node name="Door" type="Area2D" parent="Map" unique_id=724285490]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Door" unique_id=1865686480]
+position = Vector2(3003, 510)
+shape = SubResource("RectangleShape2D_fbgik")
+
+[node name="Key" type="Area2D" parent="Map" unique_id=266325713]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Key" unique_id=1779011476]
+position = Vector2(918.375, 599)
+shape = SubResource("RectangleShape2D_di3u4")
+
+[node name="Drugs" type="Node2D" parent="Map" unique_id=175606925]
+
+[node name="Key" type="Sprite2D" parent="Map/Drugs" unique_id=73091309]
+position = Vector2(952, 598)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("8_fbgik")
+
+[node name="Ziggarettes" type="Sprite2D" parent="Map/Drugs" unique_id=668041327]
+position = Vector2(1474, 406)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("9_di3u4")
+
+[node name="Green" type="Sprite2D" parent="Map/Drugs" unique_id=482374958]
+position = Vector2(878, 630)
+rotation = 1.9627227
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("10_eddy8")
+
+[node name="Green2" type="Sprite2D" parent="Map/Drugs" unique_id=1234271940]
+position = Vector2(848, 646.00006)
+rotation = 3.3871984
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("10_eddy8")
+
+[node name="Green3" type="Sprite2D" parent="Map/Drugs" unique_id=378979758]
+position = Vector2(969.9999, 615)
+rotation = 2.7147539
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("10_eddy8")
+
+[node name="Green4" type="Sprite2D" parent="Map/Drugs" unique_id=1723296484]
+position = Vector2(991, 646)
+rotation = 3.9604757
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("10_eddy8")
+
+[node name="Redvsblue" type="Sprite2D" parent="Map/Drugs" unique_id=1863818683]
+position = Vector2(935, 638)
+rotation = 0.109411
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("11_wnqn6")
+
+[node name="Redvsblue2" type="Sprite2D" parent="Map/Drugs" unique_id=1794219501]
+position = Vector2(919, 610.99994)
+rotation = -0.66125613
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("11_wnqn6")
+
+[node name="Redvsblue3" type="Sprite2D" parent="Map/Drugs" unique_id=801656478]
+position = Vector2(831.00006, 627)
+rotation = 0.5364851
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("11_wnqn6")
+
+[node name="Redvsblue4" type="Sprite2D" parent="Map/Drugs" unique_id=1457882336]
+position = Vector2(1019, 631)
+rotation = 1.1922674
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("11_wnqn6")
+
+[node name="Redvsblue5" type="Sprite2D" parent="Map/Drugs" unique_id=1717001076]
+position = Vector2(892.99994, 645)
+rotation = 0.48673537
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("11_wnqn6")
+
+[node name="Pillen" type="Sprite2D" parent="Map/Drugs" unique_id=381642219]
+position = Vector2(765, 585.99994)
+rotation = 0.061467096
+scale = Vector2(0.255, 0.255)
+texture = ExtResource("12_drt4j")
+
+[node name="Redvsblue6" type="Sprite2D" parent="Map/Drugs" unique_id=1841930917]
+position = Vector2(935, 638)
+rotation = 0.109411
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("11_wnqn6")
+
+[node name="Leberwurst" type="Sprite2D" parent="Map/Drugs" unique_id=69347064]
+position = Vector2(1759, 172.99991)
+rotation = 0.5338426
+scale = Vector2(0.33668676, 0.33668676)
+texture = ExtResource("13_ebe3l")
+
+[node name="Cameras" type="Node2D" parent="." unique_id=1926426297]
+
+[node name="Door" type="Camera2D" parent="Cameras" unique_id=1493999827]
+position = Vector2(2940, 354)
+script = ExtResource("7_ks1xt")
+
+[node name="Bedroom" type="Camera2D" parent="Cameras" unique_id=1500863096]
+position = Vector2(636, 354)
+script = ExtResource("7_ks1xt")
+
+[node name="AndererRaum" type="Camera2D" parent="Cameras" unique_id=1840682530]
+position = Vector2(1788, 354)
+script = ExtResource("7_ks1xt")
+
+[node name="Player" parent="." unique_id=1190672547 instance=ExtResource("7_7k1fy")]
+position = Vector2(463.00003, 515)
+scale = Vector2(0.2, 0.2)
+SPEED = 300
+
+[connection signal="body_entered" from="Map/CRT" to="." method="_crt"]
+[connection signal="body_entered" from="Map/Sink" to="." method="_sink"]
+[connection signal="body_exited" from="Map/Sink" to="." method="_exit"]
+[connection signal="body_entered" from="Map/Photo" to="." method="_photo"]
+[connection signal="body_exited" from="Map/Photo" to="." method="_exit"]
+[connection signal="body_entered" from="Map/Door" to="." method="_door"]
+[connection signal="body_exited" from="Map/Door" to="." method="_exit"]
+[connection signal="body_entered" from="Map/Key" to="." method="_key"]
+[connection signal="body_exited" from="Map/Key" to="." method="_exit"]
