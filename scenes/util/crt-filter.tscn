@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://br0dgaesuylub"]
+
+[ext_resource type="Shader" uid="uid://drwcmk8ecatvg" path="res://resources/crt-filter.gdshader" id="1_fg801"]
+[ext_resource type="Script" uid="uid://bgiv0ylbpjy6x" path="res://script/util/crt_filter.gd" id="1_ntnru"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gwks1"]
+shader = ExtResource("1_fg801")
+shader_parameter/curvature = 4.0
+shader_parameter/aberration_amount = 0.003
+shader_parameter/line_count = 240.0
+shader_parameter/scanline_opacity = 0.2
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.8
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[node name="Crt" type="CanvasLayer" unique_id=134612647]
+layer = 10
+script = ExtResource("1_ntnru")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=723936895]
+top_level = true
+material = SubResource("ShaderMaterial_gwks1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,18 @@
+Music:
+	
+	LaDaDa Guitar by Alex McCulloch
+	source: https://opengameart.org/content/ladada-guitar
+	license: CC0
+	
+	Chasing Excellence by Alex McCulloch
+	source: https://opengameart.org/content/chasing-excellence
+	license: CC0
+	
+	Bleeding out by Brandon Morris
+	source: https://opengameart.org/content/bleeding-out
+	license: OGA-BY 3.0
+
+Fonts:
+	DOUBLE HOMOCIDE and Kiwi Soda by Fontenddev
+	source: https://fontenddev.com/
+	license: CC BY 4.0

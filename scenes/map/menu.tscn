@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dje34qxya2d2j"]
+
+[ext_resource type="Script" uid="uid://bu2omul7i8sld" path="res://script/map/menu.gd" id="1_pmr8f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwks1"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lb57v"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.9490196, 0.5019608, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[node name="Menu" type="Node2D" unique_id=1632547055]
+script = ExtResource("1_pmr8f")
+
+[node name="Label" type="Label" parent="." unique_id=1927403891]
+offset_right = 1152.0
+offset_bottom = 315.0
+theme_override_font_sizes/font_size = 96
+text = "Geschenke"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="." unique_id=1326405003]
+offset_left = 385.0
+offset_top = 317.0
+offset_right = 751.0
+offset_bottom = 392.0
+theme_override_colors/font_hover_color = Color(0.9490196, 0.5019608, 0, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_gwks1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lb57v")
+text = "Start"
+
+[node name="Quit" type="Button" parent="." unique_id=1818614359]
+offset_left = 385.0
+offset_top = 429.0
+offset_right = 751.0
+offset_bottom = 504.0
+theme_override_colors/font_hover_color = Color(0.9490196, 0.5019608, 0, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_gwks1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lb57v")
+text = "Quit
+"
+
+[connection signal="pressed" from="Start" to="." method="_start"]
+[connection signal="pressed" from="Quit" to="." method="_quit"]

@@ -1,0 +1,35 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://cuvqf4td2tfkq"]
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_g8yhc"]
+resource_name = "Phaser"
+range_min_hz = 10.0
+range_max_hz = 1600.145
+rate_hz = 13.175
+feedback = 0.6
+depth = 3.6
+
+[sub_resource type="AudioEffectEQ10" id="AudioEffectEQ10_g8yhc"]
+resource_name = "EQ10"
+band_db/31_hz = 4.0
+band_db/62_hz = -30.5
+band_db/125_hz = -13.5
+band_db/250_hz = 12.0
+band_db/500_hz = -29.5
+band_db/1000_hz = -6.5
+band_db/2000_hz = 11.0
+band_db/4000_hz = 14.8
+band_db/8000_hz = 9.0
+band_db/16000_hz = -15.6
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_g8yhc"]
+resource_name = "Limiter"
+ceiling_db = -4.6
+
+[resource]
+bus/0/volume_db = -0.13049698
+bus/0/effect/0/effect = SubResource("AudioEffectPhaser_g8yhc")
+bus/0/effect/0/enabled = false
+bus/0/effect/1/effect = SubResource("AudioEffectEQ10_g8yhc")
+bus/0/effect/1/enabled = false
+bus/0/effect/2/effect = SubResource("AudioEffectLimiter_g8yhc")
+bus/0/effect/2/enabled = false

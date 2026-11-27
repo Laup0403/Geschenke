@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://be5yaq308u56j"]
+
+[ext_resource type="Script" uid="uid://b354dsjd0suvw" path="res://script/map/klo.gd" id="1_sewif"]
+[ext_resource type="PackedScene" uid="uid://br0dgaesuylub" path="res://scenes/util/crt-filter.tscn" id="2_6xnh8"]
+[ext_resource type="PackedScene" uid="uid://bgj8dyv2cfbce" path="res://scenes/util/textbox.tscn" id="3_l7eb8"]
+[ext_resource type="Texture2D" uid="uid://x7l50rxufgxs" path="res://sprites/klo/map.png" id="4_47nh0"]
+[ext_resource type="PackedScene" uid="uid://bxfmpnwqmjpcx" path="res://scenes/util/player.tscn" id="5_k1ugk"]
+[ext_resource type="Script" uid="uid://c8m64frwcmnyq" path="res://script/util/camera_shake.gd" id="6_6xnh8"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j2mxd"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_01wpx"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bjsm5"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjsm5"]
+size = Vector2(80.5, 1811.5)
+
+[node name="Klo" type="Node2D" unique_id=1167123987]
+script = ExtResource("1_sewif")
+
+[node name="Crt" parent="." unique_id=134612647 instance=ExtResource("2_6xnh8")]
+
+[node name="Textbox" parent="." unique_id=772682099 node_paths=PackedStringArray("player") instance=ExtResource("3_l7eb8")]
+player = NodePath("../Player")
+
+[node name="Map" type="Sprite2D" parent="." unique_id=509267743]
+texture = ExtResource("4_47nh0")
+centered = false
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=372126895]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=267874657]
+position = Vector2(299, 619)
+shape = SubResource("WorldBoundaryShape2D_j2mxd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall" unique_id=489917290]
+position = Vector2(0, 545)
+shape = SubResource("WorldBoundaryShape2D_01wpx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall" unique_id=600421686]
+position = Vector2(807, 511)
+shape = SubResource("WorldBoundaryShape2D_bjsm5")
+
+[node name="Exit" type="Area2D" parent="." unique_id=787958786]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1766595434]
+position = Vector2(211, 428)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_bjsm5")
+
+[node name="Player" parent="." unique_id=1190672547 instance=ExtResource("5_k1ugk")]
+position = Vector2(229, 406)
+scale = Vector2(0.3, 0.3)
+SPEED = 300
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1108496717]
+position = Vector2(548, 306)
+zoom = Vector2(1.07, 1.07)
+script = ExtResource("6_6xnh8")
+
+[connection signal="body_entered" from="Exit" to="." method="_on_exit"]
+[connection signal="body_exited" from="Exit" to="." method="_not_exit"]
